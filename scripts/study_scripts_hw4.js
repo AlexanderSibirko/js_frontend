@@ -9,7 +9,7 @@
 for (let index = 0; index < 11; index++) {
     if (index === 0) {
         console.log(`${index} - это ноль`)
-    } else if (index % 2 === 1) {
+    } else if (index % 2) {
         console.log(`${index} - нечетное число`)
     } else {
         console.log(`${index} - четное число`)
@@ -31,11 +31,7 @@ console.log(arr);
 // 3. Найти есть ли в этом массиве число 3
 const randomMinMax = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const randomNumbersArray = [];
-randomNumbersArray.push(randomMinMax(0,9))
-randomNumbersArray.push(randomMinMax(0,9))
-randomNumbersArray.push(randomMinMax(0,9))
-randomNumbersArray.push(randomMinMax(0,9))
-randomNumbersArray.push(randomMinMax(0,9))
+randomNumbersArray.push(randomMinMax(0,9),randomMinMax(0,9),randomMinMax(0,9),randomMinMax(0,9),randomMinMax(0,9))
 console.log(randomNumbersArray);
 
 const minValue = Math.min(...randomNumbersArray);
