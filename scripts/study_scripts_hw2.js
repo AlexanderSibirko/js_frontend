@@ -17,7 +17,7 @@ console.log(num2 >=3 ? 'num2 >= 3 test passed' : 'num2 >= 3 test failed');
 // console.log('---');
 // }
 let test = true;
-console.log(test === true ? '+++' : "---");
+console.log(test ? '+++' : "---");
 
 
 // Задание 3
