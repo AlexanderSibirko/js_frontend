@@ -39,7 +39,7 @@
         // 5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
         document.querySelector('#dropdownMenuButton').id = 'superDropdown';
         // 6. Добавьте атрибут data-dd со значением 3 элементу у которого существует атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
-        document.querySelector('[aria-labelledby = "dropdownMenuButton"]').children[2].dataset.dd = 3;
+        document.querySelector('[aria-labelledby = "dropdownMenuButton"]').dataset.dd = 3;
         // 7. Удалите атрибут type у элемента с классом "dropdown-toggle".
         document.querySelector('.dropdown-toggle').removeAttribute('type');
     </script>
