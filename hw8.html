@@ -65,7 +65,7 @@
         document.addEventListener('click', (event) => {
             const target = event.target;
             const searchClass = 'super_element';
-            console.log(`Класс ${searchClass} $((target.classList.contains(searchClass)) ? 'присутствует' : 'отсутствует') в элементе ${target.tagName}`);
+            console.log(`Класс ${searchClass} ${(target.classList.contains(searchClass)) ? 'присутствует' : 'отсутствует'} в элементе ${target.tagName}`);
         });
         // 4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: "Вы навели на textarea."
         document.querySelector('textarea').addEventListener('mouseover', (event) => {
