@@ -30,7 +30,7 @@
         });
         // 2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он присутствует у этого элемента, либо добавить, если такого класса у элемента не было.
         const buttonElement = document.querySelector('.btn');
-        (buttonElement.classList.contains('btn-secondary')) ? buttonElement.classList.remove('btn-secondary') : buttonElement.classList.add('btn-secondary');
+        buttonElement.classList.toggle('btn-secondary');
         // 3. Необходимо удалить класс "dropdown-menu" у элемента, у которого присутствует класс "menu".
         document.querySelector('.menu').classList.remove('dropdown-menu');
         // 4. Используя метод insertAdjacentHTML добавьте после div'a с классом "dropdown" следующую разметку:
