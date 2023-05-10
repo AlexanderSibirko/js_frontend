@@ -60,14 +60,32 @@
         // какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
         // - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
         // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
-        document.querySelector('form').addEventListener('submit', (event) => { // [...document.querySelectorAll('button')].at(-1) - последний button 
-            (!validatingForm()) ? event.preventDefault() : 'all is fine';
+        document.querySelector('form input').addEventListener('input', (event) => {
+            console.log('input in form');
         });
 
-        function validatingForm() {
-            console.log('prevent');
-            return true;
+        document.querySelector('form select').addEventListener('change', (event) => {
+            console.log('select in form');
+        });
+
+        document.querySelector('form').addEventListener('submit', (event) => {
+            if (!validatingForm(event.target)) {event.preventDefault()};
+        });
+
+        function toggleError(element) {
+            element.classList.toggle('error');
         }
+
+        function validatingForm(targetForm) {
+            let result = true;
+            targetForm.querySelectorAll('.form-control').forEach(element => {
+            // element.addEventListener('click', (event) => {
+            //     console.log(`${event.target.textContent}`);
+            // });
+            });
+        }  
+
+        
 
     </script>
 </body>
