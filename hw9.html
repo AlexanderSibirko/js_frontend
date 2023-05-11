@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style type = "text/css" media = "all">
+        .error {
+          background-color: lightcoral;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,33 +66,25 @@
         // какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
         // - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
         // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
-        document.querySelector('form input').addEventListener('input', (event) => {
-            console.log('input in form');
-        });
-
-        document.querySelector('form select').addEventListener('change', (event) => {
-            console.log('select in form');
-        });
-
         document.querySelector('form').addEventListener('submit', (event) => {
-            if (!validatingForm(event.target)) {event.preventDefault()};
-        });
-
-        function toggleError(element) {
-            element.classList.toggle('error');
-        }
-
-        function validatingForm(targetForm) {
-            let result = true;
-            targetForm.querySelectorAll('.form-control').forEach(element => {
-            // element.addEventListener('click', (event) => {
-            //     console.log(`${event.target.textContent}`);
-            // });
+            let stopSubmit = false;
+            event.target.querySelectorAll('.form-control').forEach(element => {
+                if(!checkValue(element)) stopSubmit = true;
             });
-        }  
-
-        
-
+            if (stopSubmit) {event.preventDefault();}
+        });
+        document.querySelector('form input').addEventListener('input', (event) => {
+            checkValue(event.target);        
+        });
+        document.querySelector('form select').addEventListener('change', (event) => {
+            checkValue(event.target);
+        });
+        function checkValue(element) {
+            (element.value.trim()) ? removeErrorClass(element) : addErrorClass(element);
+            return element.value.trim();
+        }
+        const addErrorClass = (element) => {element.classList.add('error');}
+        const removeErrorClass = (element) => {element.classList.remove('error');}
     </script>
 </body>
 
