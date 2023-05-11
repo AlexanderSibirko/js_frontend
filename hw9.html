@@ -80,7 +80,7 @@
             checkValue(event.target);
         });
         function checkValue(element) {
-            (element.value.trim()) ? removeErrorClass(element) : addErrorClass(element);
+            (element.value.trim()) ? removeErrorClass(element) : addErrorClass(element); //trim() для того чтобы не считал заполненным поле только с "пробелами"
             return element.value.trim();
         }
         const addErrorClass = (element) => {element.classList.add('error');}
