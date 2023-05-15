@@ -1,0 +1,92 @@
+<!-- Задание 1
+1. Поиск в интернете (бесплатные api примеры).
+2. Найти любые данные, на произвольную тему.
+3. Создать файл data.js.
+4. Создать переменную которая будет хранить данные из публичных api.
+
+Задание 2
+1. Создать файл index.html.
+2. Подключить data.js.
+3. Сформировать контент из данных (картинка загловок и параграф).
+4. Добавить данный контент в вёрстку.
+5. * Добавить стили при необходимости (по желанию). -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type = "text/css" media = "all">
+        .animeList-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, max(300px, 100%/4)), 1fr));
+            gap: 10px;
+        }
+
+        .animeListElement__article {
+            padding-left: 8px;
+            padding-right: 8px;
+            border: solid black 2px;
+        }
+
+        .animeListElement__title {
+            font-size:x-large;
+        }
+
+        .animeListElement__Rating {
+            font-size:x-large;
+            color:rgb(64, 150, 248)
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="animeList-box">
+        <!-- content added here by JS based on data.js -->
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const animeListBox = document.querySelector('.animeList-box');
+
+        dataAnimeAPI.forEach(dataElement => {
+            const element = document.createElement('div');
+            element.classList.add('animeListElement__article');
+
+            const elementImage = document.createElement('img');
+            elementImage.classList.add('animeListElement__image');
+            elementImage.src = dataElement.attributes.posterImage.small;
+            elementImage.alt = 'Poster small';
+            element.appendChild(elementImage);
+            
+            const elementContent = document.createElement('div');
+            elementContent.classList.add('animeListElement__content');
+            element.appendChild(elementContent);
+
+            const elementCanonicalTitle = document.createElement('h3');
+            elementCanonicalTitle.classList.add('animeListElement__title');
+            elementCanonicalTitle.textContent = dataElement.attributes.canonicalTitle;
+            elementContent.appendChild(elementCanonicalTitle);
+
+            const elementDescription = document.createElement('p');
+            elementDescription.classList.add('animeListElement__Description');
+            elementDescription.textContent = dataElement.attributes.description;
+            elementContent.appendChild(elementDescription);
+
+            const elementAverageRating = document.createElement('p');
+            elementAverageRating.classList.add('animeListElement__Rating');
+            elementAverageRating.textContent = `Average rating: ${dataElement.attributes.averageRating}`;
+            elementContent.appendChild(elementAverageRating);
+
+            animeListBox.appendChild(element);
+        });
+    </script>
+</body>
+
+</html>
