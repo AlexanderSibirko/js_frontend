@@ -201,6 +201,8 @@ img {
     justify-content: center;
     gap: 11px;
     border: solid 1px #FFFFFF;
+
+    cursor: pointer;
 }
 
 .items__item:hover .items__item-image{
@@ -211,12 +213,16 @@ img {
     display: flex;
 }
 
+.items__add-to-cart:hover .items__add-to-cart-text {
+    color:#F16D7F;
+}
+
 .items__add-to-cart-text {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    
+ 
     color: #FFFFFF;
 }
 
@@ -314,6 +320,110 @@ img {
     text-align: center;
     
     color: #FBFBFB;
+}
+
+.cart-items__block {
+    display: flex;
+    flex-direction: column;
+    padding-top: 96px;
+    display: none;
+}
+
+.cart-items__header-heading {
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #222222;
+    margin-bottom: 64px;
+}
+
+.cart-items__item {
+    max-width: 650px;
+    max-height: 300px;
+    position: relative;
+    background: #F8F8F8;
+    display: flex;
+    flex-direction: row;
+
+    box-shadow: 17px 19px 24px 0px #00000021;
+}
+
+.cart-items__item-image {
+    height: 100%;
+    max-width: 260px;
+}
+
+.cart-item__remove-cross {
+    z-index: 10; 
+    position: absolute;
+    top: 28px;
+    right: 22px;
+    /* margin: 24px; */
+    cursor: not-allowed;
+
+};
+
+.cart-items__header-text {
+    text-align: center;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    
+    color: #9F9F9F;
+}
+
+.cart-items__grid {
+    display: grid;
+    gap: 40px;
+}
+
+.cart-items__item-content {
+    padding-top: 24px;
+    padding-left: 32px;
+}
+
+.cart-items__item-heading {
+    margin-bottom: 42px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+
+    color: #000000;
+}
+
+.cart-items__item-text {
+    margin-bottom: 6px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 120%;
+
+    color: #575757;
+}
+
+.cart-items__quantity-input {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 120%;
+
+    max-width: 60px;
+    text-align: center;
+}
+
+.cart-items__quantity-input::-webkit-outer-spin-button,
+.cart-items__quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .subscribe {
