@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="myElement">There is small text</p>
+
+    <script src="hw15.js"></script>
+    <script>
+      getUserData(89727680)
+        .then((data) => console.log(data))
+        .catch((e) => console.log(e));
+
+      getUserData(75674645654654634680)
+        .then((data) => console.log(data))
+        .catch((e) => console.log(e));
+
+      //saveUserData test начинается через 3 секунды, чтобы в консоли не путали сообщения от тестирования GET и POST запросов
+      setTimeout(() => {
+        console.log(
+          "getUserData test most likely done. Launching saveUserData test"
+        );
+
+        const user = {
+          name: "John Smith",
+          age: 30,
+          email: "john@example.com",
+        };
+
+        saveUserData(user, "https://not-exist")
+          .then((result) => {
+            console.log("User data saved successfully" + result.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        saveUserData(user, "https://httpbin.org/post ") //у меня на получение ответа иногда уходит до 40-50 секунд / иногда отклоняет 504 ошибкой
+          .then((result) => {
+            console.log("User data saved successfully " + result.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 3000);
+
+      changeStyleDelayed("myElement", 2000);
+    </script>
+  </body>
+</html>
