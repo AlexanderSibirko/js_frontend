@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+}
+
+.center {
+  padding-left: 600px;
+  padding-right: 600px;
+  background-color: #F4F0EC;
+}
+
+.displyText {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 4.25rem;
+  line-height: 125%;
+}
+
+.h1Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 125%;
+}
+
+.h2Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 125%;
+}
+
+.h3Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 125%;
+}
+
+.h4Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 125%;
+}
+
+.h5Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 125%;
+}
+
+.h6Text {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 125%;
+}
+
+.pLargeText {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 150%;
+}
+
+.pMediumText {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+.pSmallText {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 150%;
+}
+
+.someDivText {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 150%;
+}
+
+.someDivBoldText {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 150%;
+}
+
+.someDivItalicText {
+  font-family: "Jost";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 150%;
+}/*# sourceMappingURL=style.css.map */

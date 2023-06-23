@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style>
+      .line_through {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="shop">
+      <div class="product">
+        <h3 :text-content.prop="product.name" class="product__header"></h3>
+        <p
+          :text-content.prop="(product.price*product.discount).toFixed(0)"
+          class="product__price"
+        ></p>
+        <img :src="product.imgURL" alt="product image" class="product__image" />
+      </div>
+      <button @click.once="makeDiscount()" class="button__sales">
+        Get discount
+      </button>
+    </div>
+    <div id="users">
+      <ul>
+        <li v-for="user in users" :key="user.id">
+          <p>Имя: {{ user.name }}</p>
+          <p>Возраст: {{ user.age }}</p>
+        </li>
+      </ul>
+    </div>
+    <div id="shopingList">
+      <ul>
+        <li v-for="item in items" :key="item.id">
+          <input v-model="item.amount" type="number" />
+          <label
+            ><input v-model="item.buyed" type="checkbox" />
+            <span :class="{line_through: item.buyed}"
+              >{{ item.name }}</span
+            ></label
+          >
+        </li>
+      </ul>
+    </div>
+    <div id="contacts">
+      <form @submit.prevent="addContact" action="#">
+        <p class="contacts__form__text">Name:</p>
+        <input v-model.trim="curName" type="text" required />
+        <p class="contacts__form__text">Surname:</p>
+        <input v-model.trim="curSurname" type="text" required />
+        <p class="contacts__form__text">Email:</p>
+        <input v-model.trim="curEmail" type="email" required />
+        <button type="submit">Add Contact</button>
+      </form>
+      <ul>
+        <li v-for="contact in contactsList" :key="contact.id">
+          {{ contact.name }} {{ contact.surname }} - {{ contact.email }}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const shop = new Vue({
+        el: "#shop",
+        data: {
+          product: {
+            name: "Apple",
+            price: 500,
+            imgURL: "img/applePhoto.jpg",
+            discount: 1,
+          },
+        },
+
+        methods: {
+          makeDiscount() {
+            this.product.discount = 1 - this.randomNum(1, 20) / 100;
+          },
+          randomNum(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+          },
+        },
+
+        computed: {},
+      });
+      const users = new Vue({
+        el: "#users",
+        data: {
+          users: [
+            {
+              name: "Alex",
+              age: 36,
+            },
+            {
+              name: "Nick",
+              age: 30,
+            },
+            {
+              name: "Peter",
+              age: 45,
+            },
+          ],
+        },
+
+        methods: {
+          makeDiscount() {
+            this.product.discount = 1 - this.randomNum(1, 20) / 100;
+          },
+          randomNum(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+          },
+        },
+
+        computed: {},
+      });
+      const shopingList = new Vue({
+        el: "#shopingList",
+        data: {
+          items: [
+            { name: "Milk", amount: "4", buyed: false },
+            { name: "Bread", amount: "1", buyed: true },
+            { name: "Apple", amount: "5", buyed: false },
+            { name: "Beef", amount: "0", buyed: false },
+          ],
+        },
+      });
+      const contacts = new Vue({
+        el: "#contacts",
+        data: {
+          curName: "",
+          curSurname: "",
+          curEmail: "",
+          contactsList: [
+            {
+              name: "Alex",
+              surname: "The Greate",
+              email: "my@yandex.ru",
+            },
+          ],
+        },
+        methods: {
+          addContact() {
+            this.contactsList.push({
+              name: this.curName,
+              surname: this.curSurname,
+              email: this.curEmail,
+            });
+            this.curName = "";
+            this.curSurname = "";
+            this.curEmail = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

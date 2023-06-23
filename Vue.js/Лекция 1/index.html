@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello new HTML</h1>
+      <h2>{{text}}</h2>
+      <!-- <h3>{{sayHello()}}</h3> <-- Выполняется бесконечно, если так добавить? -->
+
+      <button v-on:click="changeText()">Button don't click</button>
+      <button v-on:click="increase(5, $event)">Increase count by 5</button>
+      <p>{{counter}}</p>
+      <h3 v-on:mousemove="mouseMove($event)">
+        Mouse {{x}}, {{y}}
+        <span v-on:mousemove.stop>stop mousemove</span>
+      </h3>
+      <p v-html="bigText"></p>
+
+      <h3 v-if="productExistInCart">Товар уже есть в корзине!</h3>
+      <h3 v-else="!productExistInCart">Добавить товар в корзину?</h3>
+      <h3 v-show="productExistInCart">Show</h3>
+      <button @click="productExistInCart = !productExistInCart">
+        Add product
+      </button>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          text: "Привет, Vue!",
+          counter: 0,
+          x: 0,
+          y: 0,
+          bigText: `big text <span>another <b>text</b></span>`,
+          productExistInCart: true,
+        },
+        methods: {
+          changeText() {
+            this.text = "changed Text";
+          },
+          increase(step, event) {
+            this.counter += step;
+            console.log(event);
+          },
+          mouseMove(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+        },
+      });
+
+      setTimeout(() => {
+        app.text = "Новый текст";
+      }, 2000);
+    </script>
+  </body>
+</html>

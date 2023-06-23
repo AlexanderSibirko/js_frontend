@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style>
+      .bounce-enter-active {
+        animation: bounce-in 0.5s;
+      }
+      .bounce-leave-active {
+        animation: bounce-in 0.5s reverse;
+      }
+      @keyframes bounce-in {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.25);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="shop">
+      <p>{{ productsInCart }}</p>
+      <button
+        @click="increase(button)"
+        v-for="button in buttons"
+        :key="button.id"
+      >
+        {{ button.text }}
+      </button>
+
+      <button @click="verifyAge=true">Мне исполнилось 14 лет</button>
+      <button @click="verifyAge=false">Мне ещё нет 14 лет</button>
+
+      <p v-if="verifyAge">Можете закзать товар</p>
+      <p v-show="verifyAge!=null" v-else>Доступ закрыт</p>
+
+      <button @click="showMore = !showMore">Показать ещё</button>
+      <transition name="bounce">
+        <p v-show="showMore">Больше контента</p>
+      </transition>
+
+      <button @click="randomNum(1,10)">Генерировать случайное число</button>
+      <p v-if="randomNumber < 5">Число меньше 5</p>
+      <p v-else-if="randomNumber >= 5 && randomNumber < 8">Число от 5 до 7</p>
+      <p v-else-if="randomNumber >= 8">Число больше 8</p>
+    </div>
+    <script>
+      const shop = new Vue({
+        el: "#shop",
+        data: {
+          productsInCart: 0,
+          buttons: [
+            { id: 1, text: "add item to cart", productInCart: false },
+            { id: 2, text: "add item to cart", productInCart: false },
+            { id: 3, text: "add item to cart", productInCart: false },
+            { id: 4, text: "add item to cart", productInCart: false },
+          ],
+          verifyAge: null,
+          showMore: false,
+          randomNumber: null,
+        },
+
+        methods: {
+          increase(button) {
+            if (!button.productInCart) {
+              button.text = "Item in cart";
+              this.productsInCart++;
+              button.productInCart = true;
+            }
+          },
+          randomNum(min, max) {
+            this.randomNumber = Math.floor(Math.random() * (max - min) + min);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
