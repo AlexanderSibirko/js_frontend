@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Введение в Vue.js (Vue tasks)</title>
+    <style>
+      .fliped {
+        transform: rotate(180deg);
+      }
+    </style>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- (1) Создать кнопку "Перевернуть". При клике на кнопку текст кнопки, должен перевернуться и отобразиться в обратном порядке. -->
+    <div id="vue-button">
+      <button @click="flipText()" :class="{fliped: textFlipped}">
+        Перевернуть
+      </button>
+    </div>
+    <script>
+      const component = new Vue({
+        el: "#vue-button",
+        data: {
+          textFlipped: false,
+        },
+        methods: {
+          flipText() {
+            this.textFlipped = !this.textFlipped;
+          },
+        },
+      });
+    </script>
+    <hr />
+
+    <!-- (2) есть список элементов. Пользователь может добавлять новые элементы списка с текстом “Новый элемент списка” нажав на кнопку "Добавить".
+         (3)* При клике на элемент списка он должен быть удален. (по желанию) -->
+    <div id="vue-list">
+      <ul>
+        <li
+          v-for="(element, index) in listElements"
+          :key="index"
+          @click="removeElement(index)"
+        >
+          {{ element.text }}
+        </li>
+      </ul>
+      <button @click="addNewElement()">Добавить</button>
+    </div>
+    <script>
+      const anotherComponent = new Vue({
+        el: "#vue-list",
+        data: {
+          listElements: [
+            { text: "Элемент1" },
+            { text: "Элемент2" },
+            { text: "Элемент3" },
+          ],
+        },
+        methods: {
+          addNewElement() {
+            this.listElements.push({
+              text: "Новый элемент списка " + Math.random(), //рандомизатор добавлен только для тестирования чтобы отличать новые элементы друг от друга визуально, и понимать что удаляется нужный
+            });
+          },
+          removeElement(elementIndex) {
+            this.listElements.splice(elementIndex, 1);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
