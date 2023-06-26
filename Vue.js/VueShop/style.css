@@ -3,17 +3,36 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 20px;
 }
 
 .center {
-  padding-left: 600px;
-  padding-right: 600px;
-  background-color: #F4F0EC;
+  padding-left: calc(50% - 600px);
+  padding-right: calc(50% - 600px);
 }
 
-.displyText {
+.roundTopRight {
+  border-radius: 0px 80px 0px 0px;
+}
+
+.roundTopLeft {
+  border-radius: 80px 0px 0px 0px;
+}
+
+.roundBottomRight {
+  border-radius: 0px 0px 80px 0px;
+}
+
+.roundBottomLeft {
+  border-radius: 0px 0px 0px 80px;
+}
+
+.counters__header-number {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -21,7 +40,7 @@ html {
   line-height: 125%;
 }
 
-.h1Text {
+.blogs__description-header, .projects__description-header, .banner__header-text {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -29,7 +48,7 @@ html {
   line-height: 125%;
 }
 
-.h2Text {
+.global-header__logo-text {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -37,7 +56,7 @@ html {
   line-height: 125%;
 }
 
-.h3Text {
+.global-footer__contacts-panel-header, .global-footer__navigation-panel-header, .blogs__presentation-grid-item-header-text {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -45,31 +64,7 @@ html {
   line-height: 125%;
 }
 
-.h4Text {
-  font-family: "DM Serif Display";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 125%;
-}
-
-.h5Text {
-  font-family: "DM Serif Display";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 125%;
-}
-
-.h6Text {
-  font-family: "DM Serif Display";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.9rem;
-  line-height: 125%;
-}
-
-.pLargeText {
+.global-footer__contacts-panel-text, .global-footer__navigation-panel-pages, .blogs__presentation-grid-item-date-text, .blogs__presentation-grid-item:nth-child(even) button, .blogs__presentation-grid-item button, .blogs__decription-text, .counters__counter-description, .projects__presentation-grid-item-button, .projects__decription-text, .banner__description-text {
   font-family: "Jost";
   font-style: normal;
   font-weight: 400;
@@ -77,7 +72,7 @@ html {
   line-height: 150%;
 }
 
-.pMediumText {
+.global-header__menu-link {
   font-family: "Jost";
   font-style: normal;
   font-weight: 400;
@@ -85,7 +80,7 @@ html {
   line-height: 150%;
 }
 
-.pSmallText {
+.banner__button {
   font-family: "Jost";
   font-style: normal;
   font-weight: 400;
@@ -93,26 +88,206 @@ html {
   line-height: 150%;
 }
 
-.someDivText {
-  font-family: "Jost";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 150%;
+.banner__button {
+  font-weight: 600;
+  background-color: #292F36;
+  padding: 26px 48px;
+  color: white;
+  border: none;
+  border-radius: 20px;
 }
 
-.someDivBoldText {
-  font-family: "Jost";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.1rem;
-  line-height: 150%;
+.global-header {
+  margin-top: 44px;
+  padding-top: 6px;
+  padding-bot: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.global-header__logo-text {
+  padding-left: 10px;
+}
+.global-header__menu {
+  display: flex;
+  gap: 64px;
+}
+.banner {
+  margin-top: 60px;
+  min-height: 760px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.banner__back-image {
+  position: absolute;
+  z-index: -1;
+}
+.banner__content {
+  margin-left: 52px;
+  max-width: 450px;
+}
+.banner__header-text {
+  font-size: 3.25rem;
+  margin-bottom: 18px;
+}
+.banner__button {
+  margin-top: 20px;
 }
 
-.someDivItalicText {
-  font-family: "Jost";
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 150%;
+.projects {
+  margin-top: 96px;
+  margin-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+}
+.projects__description {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.projects__decription-text {
+  max-width: 750px;
+  text-align: center;
+}
+.projects__presentation-grid {
+  margin-top: 92px;
+  display: grid;
+  grid-column-gap: 104px;
+  grid-row-gap: 56px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.projects__presentation-grid-item-content {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.projects__presentation-grid-item-button {
+  background-color: #F4F0EC;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.counters {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #F4F0EC;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+.counters__content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0px 56px;
+}
+.counters__content:not(:first-child) {
+  border-left: solid 1px #CDA274;
+}
+.counters__header-number {
+  color: #CDA274;
+}
+.counters__counter-description {
+  text-align: center;
+}
+
+.blogs {
+  margin-top: 96px;
+  margin-bottom: 96px;
+  display: flex;
+  flex-direction: column;
+}
+.blogs__description {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.blogs__decription-text {
+  max-width: 750px;
+  text-align: center;
+}
+.blogs__presentation-grid {
+  margin-top: 52px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.blogs__presentation-grid-item {
+  border-radius: 62px;
+  border: solid 1px #E7E7E7;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.blogs__presentation-grid-item button {
+  background-color: #F4F0EC;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+.blogs__presentation-grid-item:nth-child(even) {
+  background-color: #F4F0EC;
+}
+.blogs__presentation-grid-item:nth-child(even) button {
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+.blogs__presentation-grid-item-image-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+.blogs__presentation-grid-item-image {
+  border-radius: 45px 45px 0px 0px;
+  z-index: -5;
+}
+.blogs__presentation-grid-item-tags-overimage {
+  position: absolute;
+  background-color: white;
+  left: 20px;
+  bottom: 20px;
+  padding: 5px;
+  border-radius: 8px 8px 8px 0px;
+  z-index: 10;
+}
+.blogs__presentation-grid-item-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.global-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.global-footer__about-company-panel {
+  display: flex;
+  flex-direction: column;
+}
+.global-footer__company-description {
+  margin-top: 18px;
+}
+.global-footer__social-links {
+  margin-top: 30px;
+}
+.global-footer__navigation-panel {
+  padding-left: 96px;
+}
+.global-footer__navigation-panel-header {
+  margin-bottom: 26px;
+}
+.global-footer__navigation-panel-pages {
+  margin-bottom: 26px;
+}
+.global-footer__contacts-panel {
+  padding-left: 96px;
+}
+.global-footer__contacts-panel-header {
+  margin-bottom: 26px;
+}
+.global-footer__contacts-panel-text {
+  margin-bottom: 26px;
 }/*# sourceMappingURL=style.css.map */

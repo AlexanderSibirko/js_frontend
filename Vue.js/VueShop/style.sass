@@ -4,97 +4,346 @@ $low_attention_color: #F4F0EC
 $ligth_border_color: #E7E7E7
 $contentWidth: 1200px
 $basicFontSize: 20
+$fontSize: 20
 
 *
     margin: 0
     padding: 0
 
+a
+    text-decoration: none
+
 html
-    font-size: ($basicFontSize)+px
+    font-size: ($fontSize)+px
 
 .center
-    padding-left: 100% - $contentWidth
-    padding-right: $contentWidth
-    background-color: $low_attention_color
+    padding-left: calc(50% - calc($contentWidth / 2))
+    padding-right: calc(50% - calc($contentWidth / 2))
+    //background-color: $low_attention_color
 
-.displyText
+.roundTopRight
+    border-radius: 0px 80px 0px 0px
+
+.roundTopLeft
+    border-radius: 80px 0px 0px 0px
+
+.roundBottomRight
+    border-radius: 0px 0px 80px 0px
+
+.roundBottomLeft
+    border-radius: 0px 0px 0px 80px
+
+%displyText
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
     font-size: (85/$basicFontSize)+rem
     line-height: 125%
 
-.h1Text
+%h1Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (50/$basicFontSize)+rem
+    font-size: calc(50/$basicFontSize)+rem
     line-height: 125%
-.h2Text
+%h2Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (35/$basicFontSize)+rem
+    font-size: calc(35/$basicFontSize)+rem
     line-height: 125%
-.h3Text
+%h3Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (25/$basicFontSize)+rem
+    font-size: calc(25/$basicFontSize)+rem
     line-height: 125%
-.h4Text
+%h4Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (22/$basicFontSize)+rem
+    font-size: calc(22/$basicFontSize)+rem
     line-height: 125%
-.h5Text
+%h5Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (20/$basicFontSize)+rem
+    font-size: calc(20/$basicFontSize)+rem
     line-height: 125%
-.h6Text
+%h6Text
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (18/$basicFontSize)+rem
+    font-size: calc(18/$basicFontSize)+rem
     line-height: 125%
 
-.pLargeText
+%pLargeText
     font-family: 'Jost'
     font-style: normal
     font-weight: 400
-    font-size: (22/$basicFontSize)+rem
+    font-size: calc(22/$basicFontSize)+rem
     line-height: 150%
-.pMediumText
+%pMediumText
     font-family: 'Jost'
     font-style: normal
     font-weight: 400
-    font-size: (20/$basicFontSize)+rem
+    font-size: calc(20/$basicFontSize)+rem
     line-height: 150%
-.pSmallText
+%pSmallText
     font-family: 'Jost'
     font-style: normal
     font-weight: 400
-    font-size: (18/$basicFontSize)+rem
+    font-size: calc(18/$basicFontSize)+rem
     line-height: 150%
 
-.someDivText
+%someDivText
     font-family: 'Jost'
     font-style: normal
     font-weight: 400
-    font-size: (22/$basicFontSize)+rem
+    font-size: calc(22/$basicFontSize)+rem
     line-height: 150%
-.someDivBoldText
+%someDivBoldText
     font-family: 'Jost'
     font-style: normal
     font-weight: 700
-    font-size: (22/$basicFontSize)+rem
+    font-size: calc(22/$basicFontSize)+rem
     line-height: 150%
-.someDivItalicText
+%someDivItalicText
     font-family: 'Jost'
     font-style: italic
     font-weight: 400
-    font-size: (22/$basicFontSize)+rem
+    font-size: calc(22/$basicFontSize)+rem
     line-height: 150%
+
+%defaultButton
+    @extend %pSmallText
+    font-weight: 600
+    background-color: $main_color
+    padding: 26px 48px
+    color: white
+    border: none
+    border-radius: 20px
+
+.global-header
+    margin-top: 44px
+    padding-top: 6px
+    padding-bot: 6px
+    display: flex
+    justify-content: space-between
+
+    &__logo-text
+        @extend %h2Text
+        padding-left: 10px
+
+    &__menu
+        display: flex
+        gap: 64px
+
+    &__menu-link
+        @extend %pMediumText
+
+.banner
+    margin-top: 60px
+    min-height: 760px
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &__back-image
+        position: absolute
+        z-index: -1
+
+    &__content
+        margin-left: 52px
+        max-width: 450px
+
+    &__header-text
+        @extend %h1Text
+        font-size: calc(65/$basicFontSize)+rem
+        margin-bottom: 18px
+
+    &__description-text
+        @extend %pLargeText
+
+    &__button
+        @extend %defaultButton
+        margin-top: 20px
+
+.projects
+    margin-top: 96px
+    margin-bottom: 96px
+    display: flex
+    flex-direction: column
+
+    &__description
+        display: flex
+        align-items: center
+        flex-direction: column
+
+    &__description-header
+        @extend %h1Text
+
+    &__decription-text
+        @extend %pLargeText
+        max-width: 750px
+        text-align: center
+
+    &__presentation-grid
+        margin-top: 92px
+        display: grid
+        grid-column-gap: 104px
+        grid-row-gap: 56px
+
+        grid-template-columns: repeat(2, 1fr)
+
+    &__presentation-grid-item-content
+        margin-top: 40px
+        display: flex
+        justify-content: space-between
+
+    &__presentation-grid-item-button
+        @extend %pLargeText
+        background-color: $low_attention_color
+        border: none
+        border-radius: 50%
+        width: 70px
+        height: 70px
+
+.counters
+    display: flex
+    justify-content: space-evenly
+    background-color: $low_attention_color
+    padding-top: 150px
+    padding-bottom: 150px
+
+    &__content
+        display: flex
+        align-items: center
+        flex-direction: column
+        padding: 0px 56px
+
+    &__content:not(:first-child)
+        border-left: solid 1px $attention_color
+
+    &__header-number
+        @extend  %displyText
+        color: $attention_color
+
+    &__counter-description
+        @extend  %pLargeText
+        text-align: center
+
+.blogs
+    margin-top: 96px
+    margin-bottom: 96px
+    display: flex
+    flex-direction: column
+
+    &__description
+        display: flex
+        align-items: center
+        flex-direction: column
+
+    &__description-header
+        @extend %h1Text
+
+    &__decription-text
+        @extend %pLargeText
+        max-width: 750px
+        text-align: center
+
+    &__presentation-grid
+        margin-top: 52px
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        gap: 26px
+
+    &__presentation-grid-item
+        border-radius: 62px
+        border: solid 1px $ligth_border_color
+        padding: 20px
+        display: flex
+        flex-direction: column
+
+        button
+            @extend %pLargeText
+            background-color: $low_attention_color
+            border: none
+            border-radius: 50%
+            width: 52px
+            height: 52px
+
+    &__presentation-grid-item:nth-child(even)
+        background-color: $low_attention_color
+        button
+            @extend %pLargeText
+            background-color: white
+            border: none
+            border-radius: 50%
+            width: 52px
+            height: 52px
+
+    &__presentation-grid-item-image-wrapper
+        position: relative
+        margin-bottom: 20px
+
+    &__presentation-grid-item-image
+        border-radius: 45px 45px 0px 0px
+        z-index: -5
+
+    &__presentation-grid-item-tags-overimage
+        position: absolute
+        background-color: white
+        left: 20px
+        bottom: 20px
+        padding: 5px
+        border-radius: 8px 8px 8px 0px
+        z-index: 10
+
+    &__presentation-grid-item-header-text
+        @extend %h3Text
+
+    &__presentation-grid-item-content
+        display: flex
+        justify-content: space-between
+        margin-top: 30px
+
+    &__presentation-grid-item-date-text
+        @extend %pLargeText
+
+.global-footer
+    &__grid
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+
+    &__about-company-panel
+        display: flex
+        flex-direction: column
+
+    &__company-description
+        margin-top: 18px
+
+    &__social-links
+        margin-top: 30px
+
+    &__navigation-panel
+        padding-left: 96px
+
+    &__navigation-panel-header
+        @extend %h3Text
+        margin-bottom: 26px
+
+    &__navigation-panel-pages
+        @extend %pLargeText
+        margin-bottom: 26px
+
+    &__contacts-panel
+        padding-left: 96px
+
+    &__contacts-panel-header
+        @extend %h3Text
+        margin-bottom: 26px
+
+    &__contacts-panel-text
+        @extend %pLargeText
+        margin-bottom: 26px
