@@ -19,7 +19,6 @@ html
 .center
     padding-left: calc(50% - calc($contentWidth / 2))
     padding-right: calc(50% - calc($contentWidth / 2))
-    //background-color: $low_attention_color
 
 .roundTopRight
     border-radius: 0px 80px 0px 0px
@@ -37,7 +36,7 @@ html
     font-family: 'DM Serif Display'
     font-style: normal
     font-weight: 400
-    font-size: (85/$basicFontSize)+rem
+    font-size: calc(85/$basicFontSize)+rem
     line-height: 125%
 
 %h1Text
@@ -144,16 +143,13 @@ html
 
 .banner
     margin-top: 60px
-    min-height: 760px
     display: flex
     flex-direction: column
     justify-content: center
-
-    &__back-image
-        position: absolute
-        z-index: -1
+    position: relative
 
     &__content
+        position: absolute
         margin-left: 52px
         max-width: 450px
 
@@ -193,8 +189,7 @@ html
         display: grid
         grid-column-gap: 104px
         grid-row-gap: 56px
-
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, minmax(0px, 1fr))
 
     &__presentation-grid-item-content
         margin-top: 40px
@@ -208,6 +203,9 @@ html
         border-radius: 50%
         width: 70px
         height: 70px
+
+img
+    width: 100%
 
 .counters
     display: flex
@@ -347,3 +345,7 @@ html
     &__contacts-panel-text
         @extend %pLargeText
         margin-bottom: 26px
+
+// @media (max-width: 1200px)
+//     .center
+//         padding: 0px
