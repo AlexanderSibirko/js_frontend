@@ -40,7 +40,7 @@ html {
   line-height: 125%;
 }
 
-.blogs__description-header, .projects__description-header, .banner__header-text {
+.blogs__description-header, .projects__description-header, .banner__header-text, .latest-post__main-header, .page-head__header-text {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -56,7 +56,7 @@ html {
   line-height: 125%;
 }
 
-.global-footer__contacts-panel-header, .global-footer__navigation-panel-header, .blogs__presentation-grid-item-header-text {
+.global-footer__contacts-panel-header, .global-footer__navigation-panel-header, .blogs__presentation-grid-item-header-text, .latest-post__header-text {
   font-family: "DM Serif Display";
   font-style: normal;
   font-weight: 400;
@@ -64,7 +64,7 @@ html {
   line-height: 125%;
 }
 
-.global-footer__contacts-panel-text, .global-footer__navigation-panel-pages, .blogs__presentation-grid-item-date-text, .blogs__presentation-grid-item:nth-child(even) button, .blogs__presentation-grid-item button, .blogs__decription-text, .counters__counter-description, .projects__presentation-grid-item-button, .projects__decription-text, .banner__description-text {
+.global-footer__contacts-panel-text, .global-footer__navigation-panel-pages, .paginator__page-button, .blogs__presentation-grid-item-date-text, .blogs__presentation-grid-item-button, .blogs__decription-text, .counters__counter-description, .projects__presentation-grid-item-button, .projects__decription-text, .banner__description-text, .latest-post__description-text, .page-head__breadcrumbs {
   font-family: "Jost";
   font-style: normal;
   font-weight: 400;
@@ -111,6 +111,60 @@ html {
   display: flex;
   gap: 64px;
 }
+.page-head {
+  margin-top: 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+.page-head__content {
+  min-width: 500px;
+  background-color: white;
+  border-radius: 36px 36px 0px 0px;
+  position: absolute;
+  bottom: 0px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.page-head__header-text {
+  text-align: center;
+}
+.page-head__breadcrumbs {
+  display: flex;
+  justify-content: center;
+}
+.page-head__breadcrumb:not(:last-child)::after {
+  content: " / ";
+  white-space: pre;
+}
+
+.latest-post {
+  margin-top: 200px;
+}
+.latest-post__image {
+  border-radius: 50px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.latest-post__article {
+  margin-top: 28px;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 65px;
+}
+.latest-post__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 32px;
+}
+.latest-post__description-text {
+  margin-top: 22px;
+}
+
 .banner {
   margin-top: 60px;
   display: flex;
@@ -204,6 +258,9 @@ img {
   align-items: center;
   flex-direction: column;
 }
+.blogs__description__uncenter-align-items {
+  align-items: flex-start;
+}
 .blogs__decription-text {
   max-width: 750px;
   text-align: center;
@@ -214,6 +271,13 @@ img {
   grid-template-columns: repeat(3, 1fr);
   gap: 26px;
 }
+.blogs__presentation-grid-item-button {
+  background-color: #F4F0EC;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
 .blogs__presentation-grid-item {
   border-radius: 62px;
   border: solid 1px #E7E7E7;
@@ -221,22 +285,11 @@ img {
   display: flex;
   flex-direction: column;
 }
-.blogs__presentation-grid-item button {
-  background-color: #F4F0EC;
-  border: none;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
-}
 .blogs__presentation-grid-item:nth-child(even) {
   background-color: #F4F0EC;
 }
 .blogs__presentation-grid-item:nth-child(even) button {
   background-color: white;
-  border: none;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
 }
 .blogs__presentation-grid-item-image-wrapper {
   position: relative;
@@ -260,6 +313,24 @@ img {
   justify-content: space-between;
   margin-top: 30px;
 }
+.paginator {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.paginator__page-button {
+  background-color: white;
+  border: solid 1px #CDA274;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+.paginator__page-button:first-child {
+  border: none;
+  background-color: #F4F0EC;
+}
+
 .global-footer__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

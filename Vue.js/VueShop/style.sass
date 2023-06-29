@@ -141,6 +141,63 @@ html
     &__menu-link
         @extend %pMediumText
 
+.page-head
+    margin-top: 45px
+    display: flex
+    flex-direction: row
+    justify-content: center
+    position: relative
+    &__content
+        min-width: 500px
+        background-color: white
+        border-radius: 36px 36px 0px 0px
+        position: absolute
+        bottom: 0px
+        padding-top: 40px
+        padding-bottom: 40px
+
+    &__header-text
+        @extend %h1Text
+        text-align: center
+    &__breadcrumbs
+        @extend %pLargeText
+        display: flex
+        justify-content: center
+
+    &__breadcrumb:not(:last-child)::after
+        content: " / "
+        white-space: pre
+
+.latest-post
+    margin-top: 200px
+
+    &__main-header
+        @extend %h1Text
+
+    &__image
+        border-radius: 50px
+        height: fit-content
+
+    &__article
+        margin-top: 28px
+        padding: 22px
+        display: grid
+        grid-template-columns: repeat(2,1fr)
+        gap: 65px
+
+    &__content
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        padding-right: 32px
+
+    &__header-text
+        @extend %h3Text
+
+    &__description-text
+        @extend %pLargeText
+        margin-top: 22px
+
 .banner
     margin-top: 60px
     display: flex
@@ -241,6 +298,8 @@ img
         display: flex
         align-items: center
         flex-direction: column
+        &__uncenter-align-items
+            align-items: flex-start
 
     &__description-header
         @extend %h1Text
@@ -256,6 +315,14 @@ img
         grid-template-columns: repeat(3, 1fr)
         gap: 26px
 
+    &__presentation-grid-item-button
+        @extend %pLargeText
+        background-color: $low_attention_color
+        border: none
+        border-radius: 50%
+        width: 52px
+        height: 52px
+
     &__presentation-grid-item
         border-radius: 62px
         border: solid 1px $ligth_border_color
@@ -263,23 +330,10 @@ img
         display: flex
         flex-direction: column
 
-        button
-            @extend %pLargeText
-            background-color: $low_attention_color
-            border: none
-            border-radius: 50%
-            width: 52px
-            height: 52px
-
     &__presentation-grid-item:nth-child(even)
         background-color: $low_attention_color
         button
-            @extend %pLargeText
             background-color: white
-            border: none
-            border-radius: 50%
-            width: 52px
-            height: 52px
 
     &__presentation-grid-item-image-wrapper
         position: relative
@@ -308,6 +362,22 @@ img
 
     &__presentation-grid-item-date-text
         @extend %pLargeText
+
+.paginator
+    margin-top: 50px
+    display: flex
+    justify-content: center
+    gap: 20px
+    &__page-button
+        @extend %pLargeText
+        background-color: white
+        border: solid 1px $attention_color
+        border-radius: 50%
+        width: 52px
+        height: 52px
+    &__page-button:first-child
+        border: none
+        background-color: $low_attention_color
 
 .global-footer
     &__grid

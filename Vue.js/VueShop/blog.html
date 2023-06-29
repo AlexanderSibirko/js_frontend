@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Блог</title>
-
+    <title>Interno - дизайн комнат на ваш вкус</title>
     <!-- style add -->
     <link rel="stylesheet" href="style.css" />
     <!-- font add -->
@@ -15,6 +14,153 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
+    <!-- Vue.js версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header class="global-header center">
+      <div class="global-header__logo">
+        <a href="home.html" class="global-header__logo-link">
+          <object type="image/svg+xml" data="img/Logo.svg"></object>
+          <span class="global-header__logo-text">Interno</span>
+        </a>
+      </div>
+      <div class="global-header__menu">
+        <a href="home.html" class="global-header__menu-link">Home</a>
+        <a href="project.html" class="global-header__menu-link">Project</a>
+        <a href="blog.html" class="global-header__menu-link">Blog</a>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <img
+        src="img/banner/ArticleAndNewsHeadPic.jpg"
+        alt=""
+        class="page-head__image"
+      />
+      <div class="page-head__content">
+        <h1 class="page-head__header-text">Articles & News</h1>
+        <div class="page-head__breadcrumbs">
+          <a href="home.html" class="page-head__breadcrumb">Home</a>
+          <a href="blog.html" class="page-head__breadcrumb">Blog</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="latest-post center">
+      <div class="latest-post__head">
+        <h1 class="latest-post__main-header">Latest Post</h1>
+      </div>
+
+      <div class="latest-post__article">
+        <img
+          src="img/articles/LatestPost.png"
+          alt="Latest Post Picture"
+          class="latest-post__image"
+        />
+        <div class="latest-post__content">
+          <div class="latest-post__content-texts">
+            <h1 class="latest-post__header-text">
+              Low Cost Latest Invented Interior Designing Ideas
+            </h1>
+            <p class="latest-post__description-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum
+              deserunt quasi eveniet. Aperiam magnam corporis minima iusto ipsa
+              qui omnis? Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Quidem, tenetur?
+            </p>
+            <p class="latest-post__description-text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem,
+              tenetur?
+            </p>
+          </div>
+          <div class="blogs__presentation-grid-item-content">
+            <p class="blogs__presentation-grid-item-date-text">
+              22 December,2022
+            </p>
+            <button class="blogs__presentation-grid-item-button">></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="vue-blogs" class="blogs center">
+      <div class="blogs__description__uncenter-align-items">
+        <h1 class="blogs__description-header">Artice & News</h1>
+      </div>
+      <div class="blogs__presentation-grid">
+        <div
+          class="blogs__presentation-grid-item"
+          v-for="blog in blogsData"
+          :key="blog.id"
+        >
+          <div class="blogs__presentation-grid-item-image-wrapper">
+            <img
+              :src="blog.imageSrc"
+              alt="blog pic"
+              class="blogs__presentation-grid-item-image"
+            />
+            <p class="blogs__presentation-grid-item-tags-overimage">
+              {{ blog.tagText }}
+            </p>
+          </div>
+          <h3 class="blogs__presentation-grid-item-header-text">
+            {{ blog.headerText }}
+          </h3>
+          <div class="blogs__presentation-grid-item-content">
+            <p class="blogs__presentation-grid-item-date-text">
+              {{ blog.dateText }}
+            </p>
+            <button class="blogs__presentation-grid-item-button">></button>
+          </div>
+        </div>
+      </div>
+      <div class="paginator">
+        <button class="paginator__page-button">01</button>
+        <button class="paginator__page-button">02</button>
+        <button class="paginator__page-button">03</button>
+        <button class="paginator__page-button">></button>
+      </div>
+    </div>
+
+    <footer class="global-footer center">
+      <div class="global-footer__grid">
+        <div class="global-footer__about-company-panel">
+          <div class="global-header__logo">
+            <a href="home.html" class="global-header__logo-link">
+              <object type="image/svg+xml" data="img/Logo.svg"></object>
+              <span class="global-header__logo-text">Interno</span>
+            </a>
+          </div>
+          <p class="global-footer__company-description">
+            It is a long established fact that a reader will be distracted
+            lookings.
+          </p>
+          <div class="global-footer__social-links">
+            <a href="" class="global-footer__social-link">twitter</a>
+            <a href="" class="global-footer__social-link">instagram</a>
+            <a href="" class="global-footer__social-link">telegram</a>
+            <a href="" class="global-footer__social-link">other</a>
+          </div>
+        </div>
+
+        <div class="global-footer__navigation-panel">
+          <h3 class="global-footer__navigation-panel-header">Pages</h3>
+          <p class="global-footer__navigation-panel-pages">Home</p>
+          <p class="global-footer__navigation-panel-pages">Project</p>
+          <p class="global-footer__navigation-panel-pages">Blog</p>
+        </div>
+        <div class="global-footer__contacts-panel">
+          <h3 class="global-footer__contacts-panel-header">Contact</h3>
+          <p class="global-footer__contacts-panel-text">
+            55 East Birchwood Ave. Brooklyn, New York 11201
+          </p>
+          <p class="global-footer__contacts-panel-text">contact@interno.com</p>
+          <p class="global-footer__contacts-panel-text">(555) 123 - 4567)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="scripts/blogs.js"></script>
+  </body>
 </html>
