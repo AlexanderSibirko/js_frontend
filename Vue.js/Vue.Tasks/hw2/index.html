@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Введение в Vue.js (Vue tasks)</title>
+    <style>
+      .fliped {
+        transform: rotate(180deg);
+      }
+    </style>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- Вы разрабатываете приложение для отображения и сортировки списка товаров. 
+      У вас есть массив объектов products, где каждый объект представляет товар 
+      с его названием и ценой. Вам необходимо отобразить список товаров и 
+      предоставить пользователю возможность сортировать товары по цене 
+      (по возрастанию и по убыванию). -->
+    <div id="vue-list">
+      <ul>
+        <button @click="resort()">{{ buttonText }}</button>
+
+        <li v-for="product in products">
+          {{ product.name }} - {{ product.price }}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const anotherComponent = new Vue({
+        el: "#vue-list",
+        data: {
+          products: [
+            { name: "Молоко", price: 100 },
+            { name: "Хлеб", price: 50 },
+            { name: "Конфеты", price: 500 },
+          ],
+          buttonText: "Отсортировать по возрастанию цены",
+          sortAsc: true,
+        },
+        methods: {
+          resort() {
+            if (this.sortAsc) {
+              this.products.sort(({ price: a }, { price: b }) => a - b);
+              this.buttonText = "Отсортировать по убыванию цены";
+              this.sortAsc = !this.sortAsc;
+            } else {
+              this.products.sort(({ price: a }, { price: b }) => b - a);
+              this.buttonText = "Отсортировать по возрастанию цены";
+              this.sortAsc = !this.sortAsc;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
