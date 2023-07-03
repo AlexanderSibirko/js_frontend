@@ -8,6 +8,9 @@ const blogs = new Vue({
                 imageSrc: "img/articles/article1.png",
                 headerText: "Let’s Get Solution For Building Construction Work",
                 dateText: "26 December,2022",
+                fullContenc: `
+                
+                `
             },
             {
                 id: 1,

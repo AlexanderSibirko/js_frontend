@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interno - дизайн комнат на ваш вкус</title>
+    <!-- style add -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- font add -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Vue.js версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="scripts/components/tag_button.js"></script>
+    <script src="scripts/components/blog_article.js"></script>
+  </head>
+  <body>
+    <header class="global-header center">
+      <div class="global-header__logo">
+        <a href="home.html" class="global-header__logo-link">
+          <object type="image/svg+xml" data="img/Logo.svg"></object>
+          <span class="global-header__logo-text">Interno</span>
+        </a>
+      </div>
+      <div class="global-header__menu">
+        <a href="home.html" class="global-header__menu-link">Home</a>
+        <a href="project.html" class="global-header__menu-link">Project</a>
+        <a href="blog.html" class="global-header__menu-link">Blog</a>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <img
+        src="img/banner/BlogDetailedHeadPic.jpg"
+        alt=""
+        class="page-head__image"
+      />
+    </div>
+
+    <div id="vue-blogs" class="blogs-detailed center">
+      <div id="blog-articles" class="blogs-detailed__articles">
+        <blog-article
+          v-for="blog in blogs"
+          :raw-html="blog.rawHtml"
+          :blog-tags="blog.blogTags"
+        >
+        </blog-article>
+      </div>
+
+      <div class="blogs-detailed__tags">
+        <h3 class="blogs-detailed__tags-header">Tags</h3>
+        <div id="tags-menu" class="blogs-detailed__tags-menu">
+          <tag-button
+            v-for="tag in tags"
+            :key="tag.tagName"
+            :tag-name="tag.tagName"
+            :check-status="tag.checked"
+          ></tag-button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#vue-blogs",
+        methods: {
+          tagsFilter(blogTags) {
+            let flag = false;
+            blogTags.forEach((tag) => {
+              console.log(tag);
+              if (tag === this.currentTag) {
+                flag = true;
+              }
+            });
+            return flag;
+          },
+        },
+        data: {
+          currentTag: "Kitchen",
+          tags: [
+            {
+              tagName: "Kitchen",
+              checked: true,
+            },
+            {
+              tagName: "Bedroom",
+              checked: false,
+            },
+            {
+              tagName: "Building",
+              checked: false,
+            },
+            {
+              tagName: "Architecture",
+              checked: false,
+            },
+            {
+              tagName: "Kitchen Planning",
+              checked: false,
+            },
+          ],
+          blogs: [
+            {
+              show: true,
+              blogTags: ["Kitchen", "Building"],
+              rawHtml: `
+              <div class="blogs-detailed__article">
+        <h1 class="blog__header-text">
+          Let's Get Solution for Building Construction Work
+        </h1>
+        <h1>
+          TAGS : Kitchen + Building
+        </h1>
+        <img src="img/articles/article1.png" alt="" class="blog__image" />
+        <div class="blog__image-footer">
+          <p class="blog__small-text">26 December 2023</p>
+          <p class="blog__small-text">Interior / Home / Decore</p>
+        </div>
+        <p class="blog__content-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          consectetur inventore totam earum sequi possimus saepe, iste unde
+          animi illo placeat nam, mollitia ipsum voluptatem nostrum
+          dignissimos aliquam.
+        </p>
+        <p class="blog__content-text">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti,
+          voluptate!
+        </p>
+        <div class="blog__quote">
+          <h1 class="blog__quote-mark">,,</h1>
+          <h3 class="blog__quote-text">The details are not the details. <br> They make the design.</h3>
+        </div>
+        <h1 class="blog__header-text">Design Sprints are great</h1>
+        <p class="blog__content-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et harum
+          architecto eum labore maiores molestiae alias aliquam amet eveniet
+          iusto ducimus ex corrupti quidem dicta, esse animi fugit aperiam
+          reiciendis.
+        </p>
+        <ol class="blog__orderedList">
+          <li class="blog__orderedList-item"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quaerat necessitatibus blanditiis quod repellendus odit provident aperiam, qui dolor nobis.</span></li>
+          <li class="blog__orderedList-item"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quaerat necessitatibus blanditiis quod repellendus odit provident aperiam, qui dolor nobis.</span></li>
+          <li class="blog__orderedList-item"><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quaerat necessitatibus blanditiis quod repellendus odit provident aperiam, qui dolor nobis.</span></li>
+        </ol>
+        <img src="img/articles/article1.png" alt="" class="blog__image" />
+        <p class="blog__content-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+          fugiat nihil natus ullam veniam maxime sed accusantium, autem eos
+          illo?
+        </p>
+      </div>`,
+            },
+            {
+              show: true,
+              blogTags: ["Bedroom"],
+              rawHtml: `
+              <div class="blogs-detailed__article">
+        <h1 class="blog__header-text">
+          TAGS : Bedroom
+        </h1>
+        <img src="img/articles/article2.png" alt="" class="blog__image" />
+        <div class="blog__image-footer">
+          <p class="blog__small-text">{{ blog.dateText }}</p>
+          <p class="blog__small-text">Interior / Home / Decore</p>
+        </div>
+        <div class="blog__quote">
+          <h1 class="blog__qoute-mark"></h1>
+          <h3 class="blog__quote-text"></h3>
+        </div>
+        <h1 class="blog__header-text">Design Sprints are great</h1>
+        <p class="blog__content-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et harum
+          architecto eum labore maiores molestiae alias aliquam amet eveniet
+          iusto ducimus ex corrupti quidem dicta, esse animi fugit aperiam
+          reiciendis.
+        </p>
+        <ol class="blog__orderedList">
+          <li class="blog__orderedList-item"></li>
+          <li class="blog__orderedList-item"></li>
+          <li class="blog__orderedList-item"></li>
+        </ol>
+        <img src="img/articles/article5.png" alt="" class="blog__image" />
+        <p class="blog__content-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti
+          fugiat nihil natus ullam veniam maxime sed accusantium, autem eos
+          illo?
+        </p>
+      </div>`,
+            },
+            {
+              show: false,
+              blogTags: ["Kitchen", "Architecture"],
+              rawHtml: `
+              <div class="blogs-detailed__article">
+        <h1 class="blog__header-text">
+          TAGS: Building + Kitchen + Architecture
+        </h1>
+        <img src="img/articles/article7.jpg" alt="" class="blog__image" />
+        <div class="blog__image-footer">
+          <p class="blog__small-text">{{ blog.dateText }}</p>
+          <p class="blog__small-text">Interior / Home / Decore</p>
+        </div>
+        <p class="blog__content-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          consectetur inventore totam earum sequi possimus saepe, iste unde
+          animi illo placeat nam, mollitia ipsum voluptatem nostrum
+          dignissimos aliquam.
+        </p>
+        <p class="blog__content-text">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti,
+          voluptate!
+        </p>
+        <h1 class="blog__header-text">Design Sprints are great</h1>
+        <p class="blog__content-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et harum
+          architecto eum labore maiores molestiae alias aliquam amet eveniet
+          iusto ducimus ex corrupti quidem dicta, esse animi fugit aperiam
+          reiciendis.
+        </p>
+      </div>`,
+            },
+          ],
+        },
+      });
+    </script>
+
+    <footer class="global-footer center">
+      <div class="global-footer__grid">
+        <div class="global-footer__about-company-panel">
+          <div class="global-header__logo">
+            <a href="home.html" class="global-header__logo-link">
+              <object type="image/svg+xml" data="img/Logo.svg"></object>
+              <span class="global-header__logo-text">Interno</span>
+            </a>
+          </div>
+          <p class="global-footer__company-description">
+            It is a long established fact that a reader will be distracted
+            lookings.
+          </p>
+          <div class="global-footer__social-links">
+            <a href="" class="global-footer__social-link">twitter</a>
+            <a href="" class="global-footer__social-link">instagram</a>
+            <a href="" class="global-footer__social-link">telegram</a>
+            <a href="" class="global-footer__social-link">other</a>
+          </div>
+        </div>
+
+        <div class="global-footer__navigation-panel">
+          <h3 class="global-footer__navigation-panel-header">Pages</h3>
+          <p class="global-footer__navigation-panel-pages">Home</p>
+          <p class="global-footer__navigation-panel-pages">Project</p>
+          <p class="global-footer__navigation-panel-pages">Blog</p>
+        </div>
+        <div class="global-footer__contacts-panel">
+          <h3 class="global-footer__contacts-panel-header">Contact</h3>
+          <p class="global-footer__contacts-panel-text">
+            55 East Birchwood Ave. Brooklyn, New York 11201
+          </p>
+          <p class="global-footer__contacts-panel-text">contact@interno.com</p>
+          <p class="global-footer__contacts-panel-text">(555) 123 - 4567)</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
